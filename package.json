@@ -1,0 +1,45 @@
+{
+  "name": "classicc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CLASSICC — online store for a clothing brand (Next.js, Prisma, Paystack)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
+    "setup": "prisma db push && tsx prisma/seed.ts",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.12",
+    "lucide-react": "^0.577.0",
+    "next": "^15.5.27",
+    "nodemailer": "^7.0.13",
+    "react": "^19.1.9",
+    "react-dom": "^19.1.9",
+    "server-only": "^0.0.1",
+    "zod": "3.25"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^22.20.5",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "19.1",
+    "@types/react-dom": "19.1",
+    "postcss": "^8.5.29",
+    "prisma": "^6.19.3",
+    "tailwindcss": "^4.1.18",
+    "tsx": "^4.23.15",
+    "typescript": "5.9"
+  }
+}

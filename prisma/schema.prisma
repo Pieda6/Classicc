@@ -1,0 +1,171 @@
+// CLASSICC data model.
+// Uses SQLite locally. For production switch `provider` to "postgresql"
+// and point DATABASE_URL at your Postgres instance.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  phone        String?
+  passwordHash String
+  role         String   @default("CUSTOMER") // CUSTOMER | ADMIN
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  addresses   Address[]
+  orders      Order[]
+  resetTokens PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Address {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label     String   @default("Home")
+  fullName  String
+  phone     String
+  line1     String
+  line2     String?
+  city      String
+  state     String
+  zoneId    String?
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  image       String?
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  products    Product[]
+}
+
+model Product {
+  id             String   @id @default(cuid())
+  name           String
+  slug           String   @unique
+  description    String
+  details        String? // newline separated bullet points
+  price          Int // minor units (kobo)
+  compareAtPrice Int?
+  gender         String   @default("UNISEX") // MEN | WOMEN | KIDS | UNISEX
+  featured       Boolean  @default(false)
+  active         Boolean  @default(true)
+  categoryId     String?
+  category       Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  images     ProductImage[]
+  variants   ProductVariant[]
+  orderItems OrderItem[]
+
+  @@index([categoryId])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  color     String? // optional: show this image when the colour is selected
+  sortOrder Int     @default(0)
+}
+
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size       String
+  color      String
+  colorHex   String      @default("#111111")
+  stock      Int         @default(0)
+  sku        String?
+  orderItems OrderItem[]
+
+  @@unique([productId, size, color])
+}
+
+model DeliveryZone {
+  id        String  @id @default(cuid())
+  name      String
+  fee       Int // minor units
+  eta       String  @default("2–4 business days")
+  active    Boolean @default(true)
+  sortOrder Int     @default(0)
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model Order {
+  id                String    @id @default(cuid())
+  orderNumber       String    @unique
+  reference         String    @unique // Paystack transaction reference
+  userId            String?
+  user              User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  email             String
+  fullName          String
+  phone             String
+  line1             String
+  line2             String?
+  city              String
+  state             String
+  deliveryZone      String
+  deliveryFee       Int
+  subtotal          Int
+  total             Int
+  notes             String?
+  status            String    @default("PENDING") // PENDING | PROCESSING | SHIPPED | DELIVERED | CANCELLED
+  paymentStatus     String    @default("UNPAID") // UNPAID | PAID | FAILED | REFUNDED
+  paymentChannel    String?
+  paidAt            DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  items             OrderItem[]
+
+  @@index([userId])
+  @@index([email])
+}
+
+model OrderItem {
+  id        String          @id @default(cuid())
+  orderId   String
+  order     Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product?        @relation(fields: [productId], references: [id], onDelete: SetNull)
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  name      String
+  size      String
+  color     String
+  image     String?
+  unitPrice Int
+  quantity  Int
+}
