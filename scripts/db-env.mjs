@@ -17,10 +17,20 @@ function find(env, names) {
   return undefined;
 }
 
+const isPg = (v) => typeof v === "string" && /^postgres(ql)?:\/\//.test(v);
+const isDirectName = (k) => /UNPOOLED|NON_POOLING|DIRECT/i.test(k);
+
+/** Last resort: any variable whose value is a Postgres URL, whatever its name (e.g. STORAGE_URL). */
+function scan(env, wantDirect) {
+  const keys = Object.keys(env).filter((k) => isPg(env[k])).sort();
+  const key = keys.find((k) => isDirectName(k) === wantDirect) ?? keys[0];
+  return key ? env[key] : undefined;
+}
+
 export function applyDbEnv(env = process.env) {
-  const pooled = find(env, POOLED);
+  const pooled = find(env, POOLED) || scan(env, false);
   if (pooled) env.DATABASE_URL = pooled;
-  const direct = find(env, DIRECT) || pooled;
+  const direct = find(env, DIRECT) || scan(env, true) || pooled;
   if (direct) env.DATABASE_URL_UNPOOLED = direct;
 }
 
