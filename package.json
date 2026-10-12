@@ -5,21 +5,18 @@
   "description": "CLASSICC — online store for a clothing brand (Next.js, Prisma, Paystack)",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && next build",
     "start": "next start",
     "lint": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
-    "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
-    "setup": "prisma db push && tsx prisma/seed.ts",
-    "postinstall": "prisma generate"
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "setup": "prisma migrate deploy && tsx prisma/seed.ts",
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "@vercel/blob": "^1.1.1",
     "bcryptjs": "^3.0.3",
     "jose": "^6.2.12",
     "lucide-react": "^0.577.0",
@@ -41,5 +38,8 @@
     "tailwindcss": "^4.1.18",
     "tsx": "^4.23.15",
     "typescript": "5.9"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

@@ -2,7 +2,7 @@
 
 Online store for the CLASSICC clothing brand. The design combines the editorial, monochrome layout of the GAZU desktop template (giant wordmark hero, black category strip, "New Vibes" banner, feature row) with the soft, rounded, app-style UI of the Lumière mobile template (ivory cards, pill category chips, heart buttons, round size selectors, big "Add to cart" button, bottom tab bar on phones).
 
-**Stack:** Next.js 15 (App Router, server actions) · TypeScript · Tailwind CSS 4 · Prisma (SQLite locally, Postgres in production) · Paystack · Nodemailer.
+**Stack:** Next.js 15 (App Router, server actions) · TypeScript · Tailwind CSS 4 · Prisma + PostgreSQL · Vercel Blob (image uploads) · Paystack · Nodemailer.
 
 ## Features
 
@@ -27,18 +27,41 @@ Online store for the CLASSICC clothing brand. The design combines the editorial,
 
 **Emails**: order confirmation (to the customer, plus an alert to the store), order status updates, password reset, welcome email, and contact-form messages.
 
-## Getting started
+## Deploy on Vercel
+
+1. **Import the repo.** On [vercel.com/new](https://vercel.com/new), import `Pieda6/Classicc`. The framework (Next.js) and build command are detected from `package.json`; leave the defaults. The first build will fail until the database exists. That's expected.
+2. **Add a database.** In the project, open **Storage → Create Database → Neon (Postgres)** and connect it to the project. This sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`. If your provider uses different names, add those two variables yourself in **Settings → Environment Variables**.
+3. **Add image storage.** **Storage → Create → Blob**, connect it to the project. This sets `BLOB_READ_WRITE_TOKEN`, so product photos uploaded in the admin are stored in Blob. Vercel's own filesystem is read-only.
+4. **Add environment variables** (**Settings → Environment Variables**). At minimum:
+   - `AUTH_SECRET`: a long random string (`openssl rand -base64 32`). **Required**; the app refuses to start without it.
+   - `ADMIN_EMAIL` and `ADMIN_PASSWORD`: the first admin account, created on the first successful deploy.
+   - `PAYSTACK_SECRET_KEY` and `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`
+   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_FROM`, `STORE_NOTIFY_EMAIL`
+   - `NEXT_PUBLIC_STORE_EMAIL`, `NEXT_PUBLIC_STORE_PHONE`, `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_STORE_ADDRESS` and the social links
+
+   See `.env.example` for the full list.
+5. **Redeploy** (**Deployments → ⋯ → Redeploy**). Each build runs `prisma migrate deploy`, then the seed script, then `next build`. The seed only fills an empty database, so it never overwrites changes made in the admin.
+6. **Point Paystack at the site.** Set the webhook URL to `https://YOUR-DOMAIN/api/webhooks/paystack`.
+7. **Custom domain (optional).** Add it under **Settings → Domains**, then set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` and redeploy. Without it, the site uses the project's `*.vercel.app` production URL for payment callbacks and email links.
+
+Then log in at `/account/login` with your admin email and change the password.
+
+## Local development
+
+You need Node 20+ and a Postgres database: a free Neon database or a local one, for example `docker run -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:16`.
 
 ```bash
 npm install
-cp .env.example .env        # then fill in values (see below)
-npm run setup               # creates the database and seeds products, categories, delivery zones, admin
+cp .env.example .env        # set DATABASE_URL / DATABASE_URL_UNPOOLED
+npm run setup               # runs migrations, seeds products, categories, delivery zones and the admin
 npm run dev                 # http://localhost:3000
 ```
 
-Seeded admin login: the `ADMIN_EMAIL` / `ADMIN_PASSWORD` from `.env` (defaults: `admin@classicc.com` / `ChangeMe123!`). **Change this password before going live** (Account → Profile & password).
+The default admin login is `admin@classicc.com` / `ChangeMe123!` unless you change `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
 
-Other scripts: `npm test` (unit tests) · `npm run lint` (type check) · `npm run db:reset` (wipe and reseed) · `node scripts/garment-art.mjs` (regenerate placeholder artwork).
+Other scripts: `npm test` (unit tests) · `npm run lint` (type check) · `npm run db:migrate` · `npm run db:seed` · `node scripts/garment-art.mjs` (regenerate placeholder artwork).
+
+Changing the schema: edit `prisma/schema.prisma`, run `npx prisma migrate dev --name what-changed`, commit the new folder in `prisma/migrations`, and deploy.
 
 ## Paystack
 
@@ -54,13 +77,10 @@ How a payment works: the server recalculates prices, stock and delivery from the
 
 Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and `EMAIL_FROM` (any SMTP provider works: Resend, Postmark, Mailgun, Zoho, Gmail app password…). Without SMTP settings, emails are printed to the server console, which is handy in development for password-reset links.
 
-## Going to production
+## Production notes
 
-- **Database**: in `prisma/schema.prisma`, change `provider = "sqlite"` to `provider = "postgresql"`, set `DATABASE_URL` to your Postgres database (Neon, Supabase, Railway…), then run `npx prisma db push && npm run db:seed`.
-- **AUTH_SECRET**: set a long random value (`openssl rand -base64 32`).
-- **Image uploads** are saved in `UPLOAD_DIR` on disk and served from `/uploads/...`. Use a host with a persistent disk (Railway volume, Render disk, a VPS). On serverless hosts like Vercel, either paste image URLs from a CDN into the product form, or swap `src/lib/uploads.ts` for S3/Cloudinary storage.
-- Update the business details (`NEXT_PUBLIC_STORE_*`, WhatsApp number, social links) in `.env`.
-- The rate limiter for login, sign-up and checkout keeps its counts in memory. If you run several server instances, replace it with Redis/Upstash.
+- **Image uploads** go to Vercel Blob when `BLOB_READ_WRITE_TOKEN` is set, and to `UPLOAD_DIR` on disk otherwise (local development or a server with a persistent disk). Pasting an `https://` image URL into the product form also works.
+- The rate limiter for login, sign-up and checkout keeps its counts in memory, per server instance. On Vercel that's a best-effort limit. For stricter limits, swap `src/lib/rate-limit.ts` for Upstash Redis.
 
 ## Product images
 

@@ -18,7 +18,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Prom
   const where: Prisma.OrderWhereInput = {
     ...(sp.status && { status: sp.status }),
     ...(sp.payment && { paymentStatus: sp.payment }),
-    ...(q && { OR: [{ orderNumber: icontains(q.toUpperCase()) }, { email: icontains(q.toLowerCase()) }, { fullName: icontains(q) }, { phone: icontains(q) }] }),
+    ...(q && { OR: [{ orderNumber: icontains(q) }, { email: icontains(q) }, { fullName: icontains(q) }, { phone: icontains(q) }] }),
   };
   const [orders, total] = await Promise.all([
     prisma.order.findMany({ where, include: { _count: { select: { items: true } } }, orderBy: { createdAt: "desc" }, skip: (page - 1) * 25, take: 25 }),

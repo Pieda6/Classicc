@@ -273,9 +273,11 @@ async function main() {
   const adminEmail = (process.env.ADMIN_EMAIL || "admin@classicc.com").toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD || "ChangeMe123!";
 
+  // This script runs on every deploy, so it only fills an empty database and
+  // never overwrites changes made from the admin dashboard.
   await prisma.user.upsert({
     where: { email: adminEmail },
-    update: { role: "ADMIN" },
+    update: {},
     create: {
       email: adminEmail,
       name: "CLASSICC Admin",
@@ -283,6 +285,17 @@ async function main() {
       passwordHash: await bcrypt.hash(adminPassword, 12),
     },
   });
+
+  if ((await prisma.deliveryZone.count()) === 0) {
+    await prisma.deliveryZone.createMany({
+      data: zones.map((z, i) => ({ ...z, fee: z.fee * 100, sortOrder: i })),
+    });
+  }
+
+  if ((await prisma.product.count()) > 0 || (await prisma.category.count()) > 0) {
+    console.log("Catalog already exists — skipping product seed.");
+    return;
+  }
 
   const catIds: Record<string, string> = {};
   for (const [i, c] of categories.entries()) {
@@ -294,16 +307,8 @@ async function main() {
     catIds[c.slug] = row.id;
   }
 
-  if ((await prisma.deliveryZone.count()) === 0) {
-    await prisma.deliveryZone.createMany({
-      data: zones.map((z, i) => ({ ...z, fee: z.fee * 100, sortOrder: i })),
-    });
-  }
-
   let v = 0;
   for (const p of products) {
-    const exists = await prisma.product.findUnique({ where: { slug: p.slug } });
-    if (exists) continue;
     const images = p.colors.flatMap(([key, label], ci) =>
       [1, 2, 3].map((n, k) => ({
         url: `/products/${p.slug}-${key}-${n}.svg`,

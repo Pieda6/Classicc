@@ -2,6 +2,7 @@ import "server-only";
 import crypto from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { put } from "@vercel/blob";
 
 export const UPLOAD_DIR = path.resolve(process.env.UPLOAD_DIR || "./uploads");
 export const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
@@ -16,15 +17,23 @@ const SIGNATURES: { ext: string; type: string; test: (b: Buffer) => boolean }[] 
 
 export const CONTENT_TYPES: Record<string, string> = Object.fromEntries(SIGNATURES.map((s) => [s.ext, s.type]));
 
-/** Validate an uploaded image by its bytes (not its claimed type) and store it. */
+/**
+ * Validate an uploaded image by its bytes (not its claimed type) and store it.
+ * Uses Vercel Blob when BLOB_READ_WRITE_TOKEN is set (required on Vercel, whose
+ * filesystem is read-only), otherwise saves to UPLOAD_DIR on local disk.
+ */
 export async function saveImageUpload(file: File): Promise<string> {
   if (file.size === 0) throw new Error("Empty file");
   if (file.size > MAX_UPLOAD_BYTES) throw new Error("Images must be 5MB or smaller");
   const buf = Buffer.from(await file.arrayBuffer());
   const sig = SIGNATURES.find((s) => s.test(buf));
   if (!sig) throw new Error("Only JPG, PNG, WebP, GIF or AVIF images are allowed");
-  await mkdir(UPLOAD_DIR, { recursive: true });
   const name = `${Date.now().toString(36)}-${crypto.randomBytes(6).toString("hex")}.${sig.ext}`;
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const blob = await put(`products/${name}`, buf, { access: "public", contentType: sig.type, addRandomSuffix: false });
+    return blob.url;
+  }
+  await mkdir(UPLOAD_DIR, { recursive: true });
   await writeFile(path.join(UPLOAD_DIR, name), buf);
   return `/uploads/${name}`;
 }

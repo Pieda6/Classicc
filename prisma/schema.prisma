@@ -1,14 +1,16 @@
-// CLASSICC data model.
-// Uses SQLite locally. For production switch `provider` to "postgresql"
-// and point DATABASE_URL at your Postgres instance.
+// CLASSICC data model (PostgreSQL).
+// DATABASE_URL: pooled connection used by the app.
+// DATABASE_URL_UNPOOLED: direct connection used by migrations
+// (Vercel's Neon integration sets both; locally they can be the same URL).
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 model User {

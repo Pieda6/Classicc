@@ -44,10 +44,7 @@ export async function getNewest(take = 4) {
   return rows.map(toCard);
 }
 
-const isPostgres = (process.env.DATABASE_URL || "").startsWith("postgres");
-
-/** Case-insensitive "contains" that works on both SQLite and Postgres. */
+/** Case-insensitive "contains" filter. */
 export function icontains(q: string): Prisma.StringFilter {
-  // `mode` only exists on the Postgres client types, hence the cast.
-  return isPostgres ? ({ contains: q, mode: "insensitive" } as Prisma.StringFilter) : { contains: q };
+  return { contains: q, mode: "insensitive" };
 }
