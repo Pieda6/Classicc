@@ -1,4 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { applyDbEnv } from "../../scripts/db-env.mjs";
+
+applyDbEnv();
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 

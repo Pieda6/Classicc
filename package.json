@@ -5,7 +5,7 @@
   "description": "CLASSICC — online store for a clothing brand (Next.js, Prisma, Paystack)",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && next build",
+    "build": "node scripts/build.mjs",
     "start": "next start",
     "lint": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
@@ -40,6 +40,6 @@
     "typescript": "5.9"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   }
 }

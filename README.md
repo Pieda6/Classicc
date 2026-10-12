@@ -30,7 +30,7 @@ Online store for the CLASSICC clothing brand. The design combines the editorial,
 ## Deploy on Vercel
 
 1. **Import the repo.** On [vercel.com/new](https://vercel.com/new), import `Pieda6/Classicc`. The framework (Next.js) and build command are detected from `package.json`; leave the defaults. The first build will fail until the database exists. That's expected.
-2. **Add a database.** In the project, open **Storage → Create Database → Neon (Postgres)** and connect it to the project. This sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`. If your provider uses different names, add those two variables yourself in **Settings → Environment Variables**.
+2. **Add a database.** In the project, open **Storage → Create Database → Neon (Postgres)** and connect it to the project. Only `DATABASE_URL` is required. The build also recognises the usual alternatives (`POSTGRES_PRISMA_URL`, `POSTGRES_URL`, and `DATABASE_URL_UNPOOLED` / `POSTGRES_URL_NON_POOLING` for the direct connection) and falls back to `DATABASE_URL` when there's no separate direct URL.
 3. **Add image storage.** **Storage → Create → Blob**, connect it to the project. This sets `BLOB_READ_WRITE_TOKEN`, so product photos uploaded in the admin are stored in Blob. Vercel's own filesystem is read-only.
 4. **Add environment variables** (**Settings → Environment Variables**). At minimum:
    - `AUTH_SECRET`: a long random string (`openssl rand -base64 32`). **Required**; the app refuses to start without it.
