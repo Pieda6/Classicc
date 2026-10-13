@@ -224,7 +224,7 @@ const products: Seed[] = [
     category: "accessories",
     gender: "UNISEX",
     price: 12500,
-    description: "A structured six-panel cap in brushed cotton twill with an embroidered CLASSICC label and adjustable strap.",
+    description: "A structured six-panel cap in brushed cotton twill with an embroidered CLASSICCC label and adjustable strap.",
     details: ["Cotton twill", "Adjustable back strap", "Embroidered eyelets"],
     sizes: ["ONE SIZE"],
     colors: [["black", "Black", "#1E1E1E"], ["sand", "Sand", "#CDBFA6"]],
@@ -280,7 +280,7 @@ async function main() {
     update: {},
     create: {
       email: adminEmail,
-      name: "CLASSICC Admin",
+      name: "CLASSICCC Admin",
       role: "ADMIN",
       passwordHash: await bcrypt.hash(adminPassword, 12),
     },

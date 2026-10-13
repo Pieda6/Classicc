@@ -14,7 +14,7 @@ export default async function AdminOrder({ params }: { params: Promise<{ id: str
   const { id } = await params;
   const order = await prisma.order.findUnique({ where: { id }, include: { items: true, user: { select: { id: true, createdAt: true } } } });
   if (!order) notFound();
-  const wa = `https://wa.me/${order.phone.replace(/\D/g, "").replace(/^0/, "234")}?text=${encodeURIComponent(`Hi ${order.fullName.split(" ")[0]}, this is CLASSICC about your order ${order.orderNumber}.`)}`;
+  const wa = `https://wa.me/${order.phone.replace(/\D/g, "").replace(/^0/, "234")}?text=${encodeURIComponent(`Hi ${order.fullName.split(" ")[0]}, this is CLASSICCC about your order ${order.orderNumber}.`)}`;
 
   return (
     <>

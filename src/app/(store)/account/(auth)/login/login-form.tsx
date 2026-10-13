@@ -22,7 +22,7 @@ export function LoginForm({ next }: { next: string }) {
         <SubmitButton className="w-full !py-4" pendingText="Logging in…">Log in</SubmitButton>
       </form>
       <p className="mt-6 text-sm text-muted text-center">
-        New to CLASSICC? <Link href={`/account/register${next ? `?next=${encodeURIComponent(next)}` : ""}`} className="text-ink underline">Create an account</Link>
+        New to CLASSICCC? <Link href={`/account/register${next ? `?next=${encodeURIComponent(next)}` : ""}`} className="text-ink underline">Create an account</Link>
       </p>
     </>
   );

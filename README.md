@@ -1,6 +1,6 @@
-# CLASSICC
+# CLASSICCC
 
-Online store for the CLASSICC clothing brand. The design combines the editorial, monochrome layout of the GAZU desktop template (giant wordmark hero, black category strip, "New Vibes" banner, feature row) with the soft, rounded, app-style UI of the Lumière mobile template (ivory cards, pill category chips, heart buttons, round size selectors, big "Add to cart" button, bottom tab bar on phones).
+Online store for the CLASSICCC clothing brand. The design combines the editorial, monochrome layout of the GAZU desktop template (giant wordmark hero, black category strip, "New Vibes" banner, feature row) with the soft, rounded, app-style UI of the Lumière mobile template (ivory cards, pill category chips, heart buttons, round size selectors, big "Add to cart" button, bottom tab bar on phones).
 
 **Stack:** Next.js 15 (App Router, server actions) · TypeScript · Tailwind CSS 4 · Prisma + PostgreSQL · Vercel Blob (image uploads) · Paystack · Nodemailer.
 

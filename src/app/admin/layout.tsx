@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { requireAdmin } from "@/lib/auth";
 import { AdminNav } from "@/components/admin/admin-nav";
 
-export const metadata: Metadata = { title: { default: "Admin", template: "%s · CLASSICC Admin" }, robots: { index: false } };
+export const metadata: Metadata = { title: { default: "Admin", template: "%s · CLASSICCC Admin" }, robots: { index: false } };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await requireAdmin();

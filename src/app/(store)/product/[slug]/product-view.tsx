@@ -214,7 +214,7 @@ export function ProductView({ product, freeThreshold }: Props) {
           <Accordion title="Returns & refunds">
             Unworn items with tags attached can be returned within 7 days of delivery. See our returns policy for details.
           </Accordion>
-          <a href={whatsappLink(`Hi CLASSICC, I have a question about the ${product.name}`)} target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 py-5 text-sm font-medium hover:bg-bg/50 rounded-b-[var(--radius-card)]">
+          <a href={whatsappLink(`Hi CLASSICCC, I have a question about the ${product.name}`)} target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 py-5 text-sm font-medium hover:bg-bg/50 rounded-b-[var(--radius-card)]">
             <MessageCircle size={18} /> Questions? Chat with us on WhatsApp
           </a>
         </div>

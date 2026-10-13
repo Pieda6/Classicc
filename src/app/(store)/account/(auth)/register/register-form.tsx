@@ -10,7 +10,7 @@ export function RegisterForm({ next }: { next: string }) {
   const fe = state?.fieldErrors ?? {};
   return (
     <>
-      <p className="eyebrow text-muted">Join CLASSICC</p>
+      <p className="eyebrow text-muted">Join CLASSICCC</p>
       <h1 className="mt-2 font-display text-3xl md:text-4xl font-semibold">Create an account</h1>
       <form action={action} className="mt-8 space-y-4">
         <input type="hidden" name="next" value={next} />

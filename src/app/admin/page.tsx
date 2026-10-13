@@ -65,7 +65,7 @@ export default async function AdminDashboard() {
 
   return (
     <>
-      <PageHeader title="Dashboard" subtitle="A quick look at how CLASSICC is doing." />
+      <PageHeader title="Dashboard" subtitle="A quick look at how CLASSICCC is doing." />
 
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-4">
         {tiles.map((t) => (

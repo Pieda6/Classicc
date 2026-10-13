@@ -12,8 +12,8 @@
       <path d="M300 276 C232 300 186 360 172 452" fill="none" stroke="#948a78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
       <ellipse cx="300" cy="276" rx="12" ry="6" fill="#aca08b"/>
       <circle cx="214" cy="340" r="4" fill="#8b8271" opacity=".55"/><circle cx="356" cy="330" r="4" fill="#8b8271" opacity=".55"/>
-      <rect x="308" y="372" width="62" height="24" rx="3" fill="#d8cdba" transform="rotate(-6 339 384)"/>
-      <text x="339" y="389" text-anchor="middle" transform="rotate(-6 339 384)" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="#8b8271">CLASSICC</text>
+      <rect x="302" y="372" width="74" height="24" rx="3" fill="#d8cdba" transform="rotate(-6 339 384)"/>
+      <text x="339" y="389" text-anchor="middle" transform="rotate(-6 339 384)" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="#8b8271">CLASSICCC</text>
       <path d="M404 440 C456 428 520 438 560 466 C552 484 506 490 446 480 L398 470 Z" fill="#aca08b"/><path d="M404 440 C456 428 520 438 560 466 C552 484 506 490 446 480 L398 470 Z" fill="url(#sh)"/>
       <path d="M414 452 C466 446 516 454 548 472" fill="none" stroke="#948a78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
       <path d="M150 450 Q300 468 446 452 L446 462 Q300 480 150 462 Z" fill="#8b8271" opacity=".7"/>

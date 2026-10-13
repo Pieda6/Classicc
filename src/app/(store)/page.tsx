@@ -27,23 +27,23 @@ export default async function HomePage() {
       <section className="hidden md:block relative overflow-hidden">
         <div className="container-x relative h-[calc(100svh-7.25rem)] min-h-[600px] max-h-[860px]">
           <div className="absolute left-8 top-14 eyebrow leading-[2.2] animate-fade-up">
-            <p>Fashion</p>
-            <p>That moves</p>
-            <p>With you.</p>
+            <p>Move</p>
+            <p>In silence.</p>
+            <p>Timeless elegance.</p>
             <span className="block mt-3 w-9 h-px bg-ink" />
           </div>
 
           <h1
-            className="absolute inset-x-0 top-[24%] text-center font-display font-semibold leading-[0.8] tracking-[-0.02em] select-none text-[clamp(6rem,16.2vw,15.5rem)] animate-fade-up"
+            className="absolute inset-x-0 top-[24%] text-center font-display font-semibold leading-[0.8] tracking-[-0.02em] select-none text-[clamp(5rem,14.2vw,13.6rem)] animate-fade-up"
             style={{ fontStretch: "105%" }}
           >
-            CLASSICC
+            CLASSICCC
           </h1>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/brand/hero-coat.svg"
-            alt="The CLASSICC signature trench coat"
+            alt="The CLASSICCC signature trench coat"
             className="absolute left-1/2 -translate-x-1/2 bottom-6 h-[86%] w-auto animate-fade-up [animation-delay:150ms]"
           />
 
@@ -64,9 +64,9 @@ export default async function HomePage() {
       <section className="md:hidden px-3 pt-1 space-y-2">
         <div className="relative rounded-[2rem] overflow-hidden bg-stone h-[62svh] min-h-[420px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/hero-coat.svg" alt="The CLASSICC signature trench coat" className="absolute inset-x-0 mx-auto bottom-4 h-[88%] w-auto" />
+          <img src="/brand/hero-coat.svg" alt="The CLASSICCC signature trench coat" className="absolute inset-x-0 mx-auto bottom-4 h-[88%] w-auto" />
           <p className="absolute top-5 inset-x-0 text-center eyebrow">New collection {year}</p>
-          <p className="absolute -bottom-3 left-2 font-display text-[22vw] leading-none font-semibold text-ink/10 select-none">CLASSICC</p>
+          <p className="absolute -bottom-3 left-2 font-display text-[19vw] leading-none font-semibold text-ink/10 select-none">CLASSICCC</p>
         </div>
         <div className="rounded-[2rem] bg-butter py-5">
           <Marquee words={["TIMELESS CLASSICS", "MADE TO MOVE"]} className="font-display font-extrabold text-6xl tracking-tight" />
@@ -165,7 +165,7 @@ export default async function HomePage() {
       {/* ---------- BEST OF ---------- */}
       <section className="container-x mt-16 md:mt-20">
         <div className="flex items-end justify-between">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold uppercase tracking-wide">Best of CLASSICC</h2>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold uppercase tracking-wide">Best of CLASSICCC</h2>
           <Link href="/shop?sort=new" className="link-underline">View all</Link>
         </div>
         <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-8 md:gap-x-5">
@@ -179,12 +179,13 @@ export default async function HomePage() {
       <section className="container-x mt-20">
         <div className="card grid md:grid-cols-[1.1fr_1fr] overflow-hidden">
           <div className="p-8 md:p-14 flex flex-col justify-center">
-            <p className="eyebrow text-muted">Our story</p>
-            <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold leading-tight">Clothes you keep. Style that stays.</h2>
+            <p className="eyebrow text-muted">The story of CLASSICCC</p>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold leading-tight">Timeless Elegance.</h2>
             <p className="mt-5 text-muted leading-relaxed max-w-md">
-              CLASSICC was born from a simple idea: fewer, better pieces. We design timeless essentials in honest fabrics, cut to
-              move with your day — from the commute to the weekend.
+              Born from a vision beyond trends, CLASSICCC blends vintage inspiration with modern luxury, creating pieces that
+              speak without saying too much.
             </p>
+            <p className="mt-4 text-sm font-semibold tracking-[0.18em] uppercase">Move in silence. Leave a lasting impression.</p>
             <Link href="/about" className="btn btn-dark mt-8 self-start">Read our story</Link>
           </div>
           <div className="relative min-h-[320px] bg-stone">

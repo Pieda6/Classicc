@@ -36,7 +36,7 @@ export function Footer() {
     <footer className="bg-ink text-paper mt-20 pb-24 md:pb-0 overflow-hidden">
       <div className="container-x pt-16 grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div>
-          <p className="font-display text-3xl font-semibold tracking-[0.12em]">CLASSICC</p>
+          <p className="font-display text-3xl font-semibold tracking-[0.12em]">CLASSICCC</p>
           <p className="mt-4 text-sm text-paper/60 max-w-xs leading-relaxed">{site.tagline}</p>
           <div className="mt-6 space-y-1 text-sm text-paper/70">
             <p>{site.address}</p>
@@ -70,10 +70,10 @@ export function Footer() {
       </div>
       <p
         aria-hidden
-        className="font-display font-semibold text-center leading-[0.8] tracking-[0.04em] text-transparent select-none -mb-[2.2vw] text-[19vw]"
+        className="font-display font-semibold text-center leading-[0.8] tracking-[0.04em] text-transparent select-none -mb-[1.8vw] text-[15.4vw]"
         style={{ WebkitTextStroke: "1px rgba(250,248,240,0.16)" }}
       >
-        CLASSICC
+        CLASSICCC
       </p>
     </footer>
   );

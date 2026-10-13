@@ -22,7 +22,7 @@ export function AdminNav({ name, email }: { name: string; email: string }) {
     <>
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex flex-col bg-ink text-paper sticky top-0 h-screen p-5">
-        <Link href="/admin" className="font-display text-2xl font-semibold tracking-[0.12em] px-3 pt-2">CLASSICC</Link>
+        <Link href="/admin" className="font-display text-2xl font-semibold tracking-[0.12em] px-3 pt-2">CLASSICCC</Link>
         <p className="px-3 mt-1 text-[0.65rem] tracking-[0.3em] uppercase text-paper/45">Admin</p>
         <nav className="mt-8 flex flex-col gap-1">
           {items.map(({ href, label, icon: Icon, exact }) => (
@@ -57,7 +57,7 @@ export function AdminNav({ name, email }: { name: string; email: string }) {
       {/* Mobile top bar */}
       <div className="lg:hidden bg-ink text-paper sticky top-0 z-30">
         <div className="flex items-center justify-between px-4 h-14">
-          <Link href="/admin" className="font-display text-lg font-semibold tracking-[0.12em]">CLASSICC <span className="text-paper/50 text-xs tracking-[0.2em]">ADMIN</span></Link>
+          <Link href="/admin" className="font-display text-lg font-semibold tracking-[0.12em]">CLASSICCC <span className="text-paper/50 text-xs tracking-[0.2em]">ADMIN</span></Link>
           <Link href="/" className="text-xs text-paper/70">View store</Link>
         </div>
         <nav className="flex gap-1 overflow-x-auto no-scrollbar px-3 pb-3">

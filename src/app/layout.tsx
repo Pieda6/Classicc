@@ -15,9 +15,9 @@ const display = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} — Timeless clothing`, template: `%s · ${site.name}` },
+  title: { default: `${site.name} — Timeless Elegance`, template: `%s · ${site.name}` },
   description:
-    "CLASSICC makes elevated everyday essentials for men, women and kids — timeless pieces, made to move with you.",
+    "CLASSICCC blends vintage inspiration with modern luxury — pieces that speak without saying too much. Move in silence. Leave a lasting impression.",
   openGraph: { siteName: site.name, type: "website" },
 };
 

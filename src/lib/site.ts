@@ -1,6 +1,6 @@
 export const site = {
-  name: "CLASSICC",
-  tagline: "Timeless pieces, made to move with you.",
+  name: "CLASSICCC",
+  tagline: "Move in silence. Leave a lasting impression.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
@@ -17,6 +17,6 @@ export const site = {
   },
 };
 
-export function whatsappLink(message = "Hi CLASSICC, I need help with") {
+export function whatsappLink(message = "Hi CLASSICCC, I need help with") {
   return `https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`;
 }

@@ -1,4 +1,4 @@
-// CLASSICC data model (PostgreSQL).
+// CLASSICCC data model (PostgreSQL).
 // DATABASE_URL: pooled connection used by the app.
 // DATABASE_URL_UNPOOLED: direct connection used by migrations
 // (Vercel's Neon integration sets both; locally they can be the same URL).

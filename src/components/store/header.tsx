@@ -41,8 +41,8 @@ export function Header({ user }: { user: { name: string; role: string } | null }
                 </Link>
               ))}
             </nav>
-            <Link href="/" aria-label="CLASSICC home" className="font-display text-[2.1rem] font-semibold tracking-[0.12em] leading-none">
-              CLASSICC
+            <Link href="/" aria-label="CLASSICCC home" className="font-display text-[2.1rem] font-semibold tracking-[0.12em] leading-none">
+              CLASSICCC
             </Link>
             <div className="flex items-center justify-end gap-6 text-[0.72rem] font-semibold tracking-[0.14em] uppercase">
               <button onClick={() => setSearchOpen(true)} className="flex items-center gap-2 hover:opacity-60">
@@ -70,7 +70,7 @@ export function Header({ user }: { user: { name: string; role: string } | null }
               <Menu size={19} strokeWidth={1.7} />
             </button>
             <Link href="/" className="font-display text-xl font-semibold tracking-[0.14em]">
-              CLASSICC
+              CLASSICCC
             </Link>
             <div className="flex gap-2">
               <button aria-label="Search" onClick={() => setSearchOpen(true)} className="size-11 rounded-full bg-paper grid place-items-center">
@@ -105,7 +105,7 @@ function MobileMenu({ onClose, user }: { onClose: () => void; user: { name: stri
       <div className="absolute inset-0 bg-ink/40" onClick={onClose} />
       <div className="absolute inset-x-3 top-3 card p-6 animate-fade-up">
         <div className="flex items-center justify-between mb-6">
-          <span className="font-display text-lg font-semibold tracking-[0.14em]">CLASSICC</span>
+          <span className="font-display text-lg font-semibold tracking-[0.14em]">CLASSICCC</span>
           <button aria-label="Close menu" onClick={onClose} className="size-10 rounded-full bg-bg grid place-items-center">
             <X size={18} />
           </button>

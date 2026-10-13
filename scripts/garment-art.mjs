@@ -218,8 +218,8 @@ const G = {
       ${seam("M300 276 C232 300 186 360 172 452", c.seam, 2, 0.3)}
       <ellipse cx="300" cy="276" rx="12" ry="6" fill="${c.dark}"/>
       ${[[214, 340], [356, 330]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="${c.darker}" opacity=".55"/>`).join("")}
-      <rect x="308" y="372" width="62" height="24" rx="3" fill="${c.light}" transform="rotate(-6 339 384)"/>
-      <text x="339" y="389" text-anchor="middle" transform="rotate(-6 339 384)" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="${c.darker}">CLASSICC</text>
+      <rect x="302" y="372" width="74" height="24" rx="3" fill="${c.light}" transform="rotate(-6 339 384)"/>
+      <text x="339" y="389" text-anchor="middle" transform="rotate(-6 339 384)" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="${c.darker}">CLASSICCC</text>
       ${piece("M404 440 C456 428 520 438 560 466 C552 484 506 490 446 480 L398 470 Z", c.dark)}
       ${seam("M414 452 C466 446 516 454 548 472", c.seam, 2, 0.4)}
       <path d="M150 450 Q300 468 446 452 L446 462 Q300 480 150 462 Z" fill="${c.darker}" opacity=".7"/>
@@ -252,8 +252,8 @@ const G = {
       <path d="M178 304 L422 304 L424 338 L176 338 Z" fill="${c.dark}"/>
       ${seam("M262 312 C262 214 338 214 338 312", c.dark, 14, 1)}
       ${seam("M168 476 L432 476", c.seam, 1.5, 0.2)}
-      <text x="300" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="8" fill="${c.darker}">CLASSICC</text>
-      <text x="300" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="5" fill="${c.darker}" opacity=".8">EST. 2024 · LAGOS</text>`,
+      <text x="300" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="7" fill="${c.darker}">CLASSICCC</text>
+      <text x="300" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="5" fill="${c.darker}" opacity=".8">MOVE IN SILENCE</text>`,
     };
   },
 };
