@@ -42,9 +42,9 @@ export default async function HomePage() {
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand/hero-coat.svg"
-            alt="The CLASSICCC signature trench coat"
-            className="absolute left-1/2 -translate-x-1/2 bottom-6 h-[86%] w-auto animate-fade-up [animation-delay:150ms]"
+            src="/brand/hero-model.webp"
+            alt="Model wearing the CLASSICCC Timeless Elegance shirt"
+            className="absolute left-1/2 -translate-x-1/2 bottom-0 h-[90%] w-auto object-contain animate-fade-up [animation-delay:150ms]"
           />
 
           <div className="absolute left-8 bottom-16 flex items-center gap-8">
@@ -63,13 +63,13 @@ export default async function HomePage() {
       {/* ---------- HERO: mobile app style ---------- */}
       <section className="md:hidden px-3 pt-1 space-y-2">
         <div className="relative rounded-[2rem] overflow-hidden bg-stone h-[62svh] min-h-[420px]">
+          <p className="absolute top-[38%] inset-x-0 text-center font-display text-[19vw] leading-none font-semibold text-ink/10 select-none">CLASSICCC</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/hero-coat.svg" alt="The CLASSICCC signature trench coat" className="absolute inset-x-0 mx-auto bottom-4 h-[88%] w-auto" />
+          <img src="/brand/hero-model.webp" alt="Model wearing the CLASSICCC Timeless Elegance shirt" className="absolute inset-x-0 mx-auto bottom-0 h-[86%] w-auto object-contain" />
           <p className="absolute top-5 inset-x-0 text-center eyebrow">New collection {year}</p>
-          <p className="absolute -bottom-3 left-2 font-display text-[19vw] leading-none font-semibold text-ink/10 select-none">CLASSICCC</p>
         </div>
         <div className="rounded-[2rem] bg-butter py-5">
-          <Marquee words={["TIMELESS CLASSICS", "MADE TO MOVE"]} className="font-display font-extrabold text-6xl tracking-tight" />
+          <Marquee words={["TIMELESS ELEGANCE", "MOVE IN SILENCE"]} className="font-display font-extrabold text-6xl tracking-tight" />
         </div>
         <Link href="/shop" className="block rounded-[2rem] bg-clay text-center py-6 text-lg font-medium">
           Discover Now
@@ -100,7 +100,7 @@ export default async function HomePage() {
       {/* ---------- MARQUEE ---------- */}
       <section className="hidden md:block container-x mt-10">
         <div className="rounded-[2.25rem] bg-butter py-8 border border-[#ece6c2]">
-          <Marquee words={["TIMELESS CLASSICS", "MADE TO MOVE", "ESSENTIALS FOR EVERY DAY"]} className="font-display font-extrabold text-[7rem] leading-none tracking-tight" />
+          <Marquee words={["TIMELESS ELEGANCE", "MOVE IN SILENCE", "LEAVE A LASTING IMPRESSION"]} className="font-display font-extrabold text-[7rem] leading-none tracking-tight" />
         </div>
       </section>
 
