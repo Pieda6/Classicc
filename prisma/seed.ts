@@ -16,14 +16,13 @@ const categories = [
 ];
 
 const ADULT = ["XS", "S", "M", "L", "XL", "XXL"];
-const KIDS = ["3-4Y", "5-6Y", "7-8Y", "9-10Y", "11-12Y"];
 const SHOES = ["40", "41", "42", "43", "44", "45"];
 
 type Seed = {
   slug: string;
   name: string;
   category: string;
-  gender: "MEN" | "WOMEN" | "KIDS" | "UNISEX";
+  gender: "MEN" | "WOMEN" | "UNISEX";
   price: number; // naira
   compareAt?: number;
   featured?: boolean;
@@ -184,39 +183,6 @@ const products: Seed[] = [
     details: ["Crepe weave with stretch", "High rise", "Concealed hook-and-bar closure"],
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [["cream", "Cream", "#E8E0CF"]],
-  },
-  {
-    slug: "kids-everyday-hoodie",
-    name: "Kids' Everyday Hoodie",
-    category: "sweatshirts",
-    gender: "KIDS",
-    price: 22000,
-    description: "Comfort meets cool. A soft fleece hoodie for little ones, built for the playground and beyond.",
-    details: ["Cotton-rich fleece", "Kangaroo pocket", "Machine washable"],
-    sizes: KIDS,
-    colors: [["black", "Black", "#222222"], ["clay", "Clay", "#D49F82"]],
-  },
-  {
-    slug: "kids-classic-tee",
-    name: "Kids' Classic Tee",
-    category: "t-shirts",
-    gender: "KIDS",
-    price: 9500,
-    description: "A soft cotton tee in a bright terracotta, cut for easy movement.",
-    details: ["100% cotton", "Regular fit"],
-    sizes: KIDS,
-    colors: [["terracotta", "Terracotta", "#C8734B"]],
-  },
-  {
-    slug: "kids-crewneck-sweatshirt",
-    name: "Kids' Crewneck Sweatshirt",
-    category: "sweatshirts",
-    gender: "KIDS",
-    price: 18500,
-    description: "A cosy crewneck in a soft sky blue — an easy everyday layer.",
-    details: ["Cotton loopback", "Ribbed trims"],
-    sizes: KIDS,
-    colors: [["sky", "Sky Blue", "#BFD0DF"]],
   },
   {
     slug: "six-panel-cap",

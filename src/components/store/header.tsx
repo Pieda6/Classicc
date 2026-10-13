@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { href: "/shop?gender=MEN", label: "Men" },
   { href: "/shop?gender=WOMEN", label: "Women" },
-  { href: "/shop?gender=KIDS", label: "Kids" },
   { href: "/shop?category=accessories", label: "Accessories" },
   { href: "/about", label: "About" },
 ];

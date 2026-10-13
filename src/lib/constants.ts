@@ -4,7 +4,7 @@ export type OrderStatus = (typeof ORDER_STATUSES)[number];
 export const PAYMENT_STATUSES = ["UNPAID", "PAID", "FAILED", "REFUNDED"] as const;
 export type PaymentStatus = (typeof PAYMENT_STATUSES)[number];
 
-export const GENDERS = ["MEN", "WOMEN", "KIDS", "UNISEX"] as const;
+export const GENDERS = ["MEN", "WOMEN", "UNISEX"] as const;
 
 export const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "XXL", "3XL", "ONE SIZE"];
 

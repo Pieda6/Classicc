@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 const groups = [
   { title: "Men", copy: "Elevated everyday essentials.", href: "/shop?gender=MEN", image: "/brand/category-men.svg" },
   { title: "Women", copy: "Effortless style for every you.", href: "/shop?gender=WOMEN", image: "/brand/category-women.svg" },
-  { title: "Kids", copy: "Comfort meets cool everyday.", href: "/shop?gender=KIDS", image: "/brand/category-kids.svg" },
+  { title: "Accessories", copy: "The finishing touches.", href: "/shop?category=accessories", image: "/brand/category-accessories.svg" },
 ];
 
 export default async function HomePage() {

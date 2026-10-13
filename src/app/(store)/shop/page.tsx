@@ -18,7 +18,7 @@ const SORTS: Record<string, { label: string; orderBy: Prisma.ProductOrderByWithR
   "price-desc": { label: "Price: high to low", orderBy: { price: "desc" } },
   name: { label: "Name A–Z", orderBy: { name: "asc" } },
 };
-const GENDER_LABEL: Record<string, string> = { MEN: "Men", WOMEN: "Women", KIDS: "Kids" };
+const GENDER_LABEL: Record<string, string> = { MEN: "Men", WOMEN: "Women" };
 
 type SP = Record<string, string | string[] | undefined>;
 const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? "";
@@ -52,7 +52,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
     active: true,
     ...(q && { OR: [{ name: icontains(q) }, { description: icontains(q) }, { category: { name: icontains(q) } }] }),
     ...(category && { category: { slug: category } }),
-    ...(gender && { gender: gender === "KIDS" ? "KIDS" : { in: [gender, "UNISEX"] } }),
+    ...(GENDER_LABEL[gender] && { gender: { in: [gender, "UNISEX"] } }),
     ...(featured && { featured: true }),
   };
   const where: Prisma.ProductWhereInput = {
@@ -163,7 +163,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
           <h1 className="mt-2 font-display text-4xl md:text-5xl font-semibold">{title}</h1>
         </div>
         <div className="flex flex-wrap gap-2 text-sm">
-          {["", "MEN", "WOMEN", "KIDS"].map((g) => (
+          {["", "MEN", "WOMEN"].map((g) => (
             <Link key={g} href={href({ gender: g || null })} className="chip" data-active={gender === g}>
               {g ? GENDER_LABEL[g] : "All"}
             </Link>

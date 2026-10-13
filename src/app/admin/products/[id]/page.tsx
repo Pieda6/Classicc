@@ -50,7 +50,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
           price: toMajor(product.price),
           compareAtPrice: product.compareAtPrice ? toMajor(product.compareAtPrice) : "",
           categoryId: product.categoryId ?? "",
-          gender: product.gender as "MEN" | "WOMEN" | "KIDS" | "UNISEX",
+          gender: (["MEN", "WOMEN"].includes(product.gender) ? product.gender : "UNISEX") as "MEN" | "WOMEN" | "UNISEX",
           featured: product.featured,
           active: product.active,
           images: product.images.map((i) => ({ url: i.url, alt: i.alt ?? "", color: i.color ?? "" })),

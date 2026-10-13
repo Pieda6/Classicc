@@ -17,7 +17,7 @@ type Product = {
   price: string;
   compareAtPrice: string;
   categoryId: string;
-  gender: "MEN" | "WOMEN" | "KIDS" | "UNISEX";
+  gender: "MEN" | "WOMEN" | "UNISEX";
   featured: boolean;
   active: boolean;
   images: Img[];
@@ -269,7 +269,6 @@ export function ProductForm({ product, categories }: { product?: Product; catego
               <option value="UNISEX">Unisex</option>
               <option value="MEN">Men</option>
               <option value="WOMEN">Women</option>
-              <option value="KIDS">Kids</option>
             </select>
           </div>
           <label className="flex items-center justify-between gap-3 text-sm">

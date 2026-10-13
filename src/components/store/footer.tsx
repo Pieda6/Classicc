@@ -8,7 +8,6 @@ const cols = [
       ["/shop", "Shop all"],
       ["/shop?gender=MEN", "Men"],
       ["/shop?gender=WOMEN", "Women"],
-      ["/shop?gender=KIDS", "Kids"],
       ["/shop?category=accessories", "Accessories"],
     ],
   },

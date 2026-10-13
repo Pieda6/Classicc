@@ -291,9 +291,6 @@ export const ART = [
   ["cropped-crewneck", "crewneck", [["clay", "#D49F82"]]],
   ["wrap-trench-coat", "coat", [["camel", "#B48A5A"]]],
   ["tailored-wide-leg-trousers", "trousers", [["cream", "#E8E0CF"]]],
-  ["kids-everyday-hoodie", "hoodie", [["black", "#222222"], ["clay", "#D49F82"]]],
-  ["kids-classic-tee", "tee", [["terracotta", "#C8734B"]]],
-  ["kids-crewneck-sweatshirt", "crewneck", [["sky", "#BFD0DF"]]],
   ["six-panel-cap", "cap", [["black", "#1E1E1E"], ["sand", "#CDBFA6"]]],
   ["canvas-tote-bag", "tote", [["natural", "#E6DCC6"]]],
   ["leather-court-sneaker", "sneaker", [["white", "#ECE9E2"], ["black", "#232323"]]],
@@ -325,7 +322,7 @@ ${g.svg}</svg>`;
 const tiles = [
   ["category-men.svg", "jacket", "#2A2928", BG.sand],
   ["category-women.svg", "dress", "#D6C1A2", "#CFC8BC"],
-  ["category-kids.svg", "crewneck", "#F1EEE6", "#CBC3B6"],
+  ["category-accessories.svg", "tote", "#E6DCC6", "#CBC3B6"],
   ["new-season.svg", "shirt", "#1F1F1F", "#BDBBB6"],
   ["about-1.svg", "cardigan", "#EEEAE0", BG.sand],
   ["about-2.svg", "coat", "#6C6862", BG.mist],
